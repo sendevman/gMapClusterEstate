@@ -1,0 +1,13 @@
+
+.form-group .invalid-feedback{
+	display: block;
+	min-height: 20px;
+}
+
+.form-group .invalid-feedback .error_content {
+	display: none;
+}
+
+.form-group.error .invalid-feedback .error_content {
+	display: block;
+}
