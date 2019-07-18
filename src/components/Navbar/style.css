@@ -30,7 +30,7 @@
 	align-items: center;
 }
 
-.navbar-inverse .navbar-brand {
+.navbar-inverse .navbar-brand div {
 	color: #3c6;
 	background-color: transparent;
 	font-size: 30px

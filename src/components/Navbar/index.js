@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import './style.css';
 
 import { authTokenSelector } from '../../redux/auth/selectors';
+import { setToken } from '../../redux/auth/actions';
 
 class Navbar extends React.Component {
 	auth = () => (
@@ -16,6 +17,7 @@ class Navbar extends React.Component {
 
 	logout = () => {
 		localStorage.removeItem('token');
+		this.props.setToken('');
 		this.props.history.push('/login');
 	}
 
@@ -27,6 +29,10 @@ class Navbar extends React.Component {
 		this.props.history.push('/signup');
 	}
 
+	goHome = () => {
+		this.props.history.push('/listingmap')
+	}
+
 	render() {
 		const { token, location } = this.props;
 		return (
@@ -36,13 +42,13 @@ class Navbar extends React.Component {
 						<div className="navbar-header">
 							<a
 								className="navbar-brand"
-								href="/"
+								onClick={this.goHome}
 							>
 								<div>TapHomes</div>
 							</a>
 						</div>
 						<ul className="nav navbar-nav navbar-right">
-							{token !== '' && <li>
+							{location && location.pathname === '/listingmap' && <li>
 								{this.auth()}
 							</li>}
 							{location && location.pathname === '/login' && <li>
@@ -71,9 +77,14 @@ const mapStateToProps = state => ({
 	token: authTokenSelector(state),
 });
 
+const mapDispatchToProps = dispatch => ({
+	setToken: (token) => dispatch(setToken(token)),
+});
+
 Navbar.propTypes = {
 	history: PropTypes.object.isRequired,
 	location: PropTypes.object.isRequired,
+	setToken: PropTypes.func.isRequired,
 	token: PropTypes.string,
 };
 
@@ -83,4 +94,4 @@ Navbar.defaultProps = {
 	location: {},
 };
 
-export default connect(mapStateToProps, null)(Navbar);
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
