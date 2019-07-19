@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
-import Home from './layouts/Home';
+import Listing from './layouts/Listing';
 import Login from './layouts/Login';
 import Signup from './layouts/Signup';
 
@@ -25,7 +25,7 @@ const Routes = () => (
 		<Switch>
 			<GuessRoute exact path="/login" component={Login} />
 			<GuessRoute exact path="/signup" component={Signup} />
-			<AuthRoute exact path="/listingmap" component={Home} />
+			<AuthRoute exact path="/listingmap" component={Listing} />
 			<Redirect path="/listingmap" to="/login" />
 		</Switch>
 	</BrowserRouter>
