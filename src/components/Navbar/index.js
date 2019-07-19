@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './style.css';
 
-import { authTokenSelector } from '../../redux/auth/selectors';
 import { setToken } from '../../redux/auth/actions';
+import logo from '../../assets/img/th_logo_color.png';
 
 class Navbar extends React.Component {
 	auth = () => (
@@ -34,17 +34,14 @@ class Navbar extends React.Component {
 	}
 
 	render() {
-		const { token, location } = this.props;
+		const { location } = this.props;
 		return (
 			<div>
 				<nav className="navbar navbar-inverse">
 					<div className="container-fluid">
 						<div className="navbar-header">
-							<a
-								className="navbar-brand"
-								onClick={this.goHome}
-							>
-								<div>TapHomes</div>
+							<a className="navbar-brand" onClick={this.goHome}>
+								<img alt="" src={logo} className="navbar-logo" />
 							</a>
 						</div>
 						<ul className="nav navbar-nav navbar-right">
@@ -73,10 +70,6 @@ class Navbar extends React.Component {
 	}
 }
 
-const mapStateToProps = state => ({
-	token: authTokenSelector(state),
-});
-
 const mapDispatchToProps = dispatch => ({
 	setToken: (token) => dispatch(setToken(token)),
 });
@@ -85,13 +78,11 @@ Navbar.propTypes = {
 	history: PropTypes.object.isRequired,
 	location: PropTypes.object.isRequired,
 	setToken: PropTypes.func.isRequired,
-	token: PropTypes.string,
 };
 
 Navbar.defaultProps = {
-	token: '',
 	history: {},
 	location: {},
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
+export default connect(null, mapDispatchToProps)(Navbar);

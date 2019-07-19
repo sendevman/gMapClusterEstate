@@ -1,3 +1,20 @@
+@font-face {
+  font-family: 'GothamRnd';
+  src: url("assets/fonts/GothamRnd-Book.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'GothamRnd';
+  font-weight: bold;
+  src: url("assets/fonts/GothamRnd-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'GothamRnd';
+  font-weight: 900;
+  src: url("assets/fonts/GothamRnd-Medium.otf") format("opentype");
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -8,6 +25,16 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: GothamRnd, source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+
+/* --primary-color: #2ecc71;
+--secondary-color: #1a73e8;
+--dark-text-color: #444;
+--light-text-color: white;
+--grey-text-color: #888;
+--error-color: #d50000;
+--link-color: #039be5; */

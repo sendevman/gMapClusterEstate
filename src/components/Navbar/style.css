@@ -33,7 +33,9 @@
 .navbar-inverse .navbar-brand div {
 	color: #3c6;
 	background-color: transparent;
-	font-size: 30px
+	font-size: 30px;
+	font-family: GothamRnd;
+	font-weight: 600;
 }
 
 .navbar-inverse .navbar-brand:focus,
@@ -44,6 +46,7 @@
 
 .navbar-inverse .navbar-right .text-black {
 	color: #3f3f3f;
+	font-family: GothamRnd;
 }
 .avatar {
 	margin-right: 10px;
@@ -66,5 +69,5 @@ a:hover {
 }
 
 .navbar-logo {
-	width: 250px;
+	width: 170px;
 }
