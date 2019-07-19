@@ -1,11 +1,11 @@
 import { API } from '../config';
 
-export function getList(param) {
-	return fetch(`${API}/${param.type}`, {
+export function getData(token, url) {
+	return fetch(`${API}/${url}`, {
 		mode: 'cors',
 		headers: {
 			'Content-Type': 'application/json',
-			Authorization: param.token,
+			Authorization: token,
 		},
 	})
 		.then(res => res.json())
