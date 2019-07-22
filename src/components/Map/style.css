@@ -1,0 +1,38 @@
+.map_marker {
+	position: relative;
+	width: 94px;
+	height: 34px;
+	background: #E9FFF3;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);
+	border-radius: 5px;
+	font-family: GothamRnd;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 19px;
+	text-align: center;
+	color: #2ECC71;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.map_marker:after {
+	position: absolute;
+	top: 34px;
+	content: "";
+	width: 0;
+	height: 0;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-top: 12px solid #E9FFF3;
+	border-radius: 1px;
+}
+
+.map_marker.active {
+	background: #1873E8;
+	color: #FFFFFF;
+}
+
+.map_marker.active:after {
+	border-top: 12px solid #1873E8;
+}

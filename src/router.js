@@ -26,7 +26,7 @@ const Routes = () => (
 			<GuessRoute exact path="/login" component={Login} />
 			<GuessRoute exact path="/signup" component={Signup} />
 			<AuthRoute exact path="/listingmap" component={Listing} />
-			<Redirect path="/listingmap" to="/login" />
+			<Redirect path="/" to="/login" />
 		</Switch>
 	</BrowserRouter>
 );

@@ -1,0 +1,95 @@
+
+.property-view-container {
+	display: flex;
+	width: 415px;
+	background: #FFFFFF;
+	box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.21);
+	border-radius: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.property-view-container:hover {
+	background: #E9FFF3;
+	cursor: pointer;
+}
+
+.property-view-container .property-image-slider {
+	position: relative;
+	width: 200px;
+	height: 170px;
+	overflow: hidden;
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.55) 100%);
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+.property-view-container .property-image-slider .property-image {
+	height: 100%;
+}
+
+.property-view-container .property-image-slider .property-fav-container {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
+	background: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.property-view-container .property-data-container {
+	flex: 1;
+	padding: 10px;
+	padding-bottom: 0px;
+}
+
+.property-view-container .property-data-container .address {
+	font-family: GothamRnd;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 19px;
+	color: #444444;
+	margin-bottom: 10px;
+}
+
+.property-view-container .property-data-container .price {
+	font-family: GothamRnd;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 19px;
+	color: #2ECC71;
+	margin-bottom: 10px;
+}
+
+.property-data-container .bed-bath-size {
+	font-family: GothamRnd;
+	font-size: 14px;
+	line-height: 17px;
+	color: #444444;
+	margin-bottom: 10px;
+}
+
+.property-data-container .mid-border {
+	border: 0.5px solid #D6D6D6;
+	margin-bottom: 10px;
+}
+
+.property-data-container .down-price,
+.property-data-container .rent-price {
+	font-family: GothamRnd;
+	font-size: 12px;
+	line-height: 14px;
+	color: #444444;
+	margin-bottom: 10px;
+}
+
+.property-data-container .equity-price {
+	font-family: GothamRnd;
+	font-size: 12px;
+	line-height: 14px;
+	color: #444444;
+}

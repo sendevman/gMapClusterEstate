@@ -3,6 +3,7 @@ import { createAction } from 'redux-actions';
 import {
 	GET_LIST_START,
 	GET_LIST_ID_START,
+	GET_DATA_START,
 	SET_LIST,
 	SET_LIST_ID,
 } from './constants';
@@ -25,4 +26,9 @@ export const getListID = createAction(
 export const setListID = createAction(
 	SET_LIST_ID,
 	(list, type) => ({ list, type }),
+);
+
+export const getData = createAction(
+	GET_DATA_START,
+	(token, url) => ({ token, url }),
 );
