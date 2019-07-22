@@ -1,6 +1,10 @@
 import { put, call, takeLatest, takeEvery } from 'redux-saga/effects';
 
-import { GET_LIST_START, GET_LIST_ID_START } from './constants';
+import {
+	GET_LIST_START,
+	GET_LIST_ID_START,
+	GET_DATA_START,
+} from './constants';
 import { setList, setListID } from './actions';
 import { getData } from './api';
 
@@ -16,9 +20,15 @@ function* asyncGetListID(param) {
 	yield put(setListID(response, fType));
 }
 
+function* asyncGetData(param) {
+	const { token, url } = param.payload;
+	yield call(getData, token, url);
+}
+
 export function* sagaWatcher() {
 	yield takeEvery(GET_LIST_START, asyncGetList);
 	yield takeEvery(GET_LIST_ID_START, asyncGetListID);
+	yield takeEvery(GET_DATA_START, asyncGetData);
 }
 
 export default [
