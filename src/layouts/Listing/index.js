@@ -6,7 +6,7 @@ import _ from 'lodash';
 import Navbar from '../../components/Navbar';
 import Filter from '../../components/Filter';
 import Property from '../../components/Property';
-import Map from '../../components/Map';
+import GMap from '../../components/GMap';
 
 import { getList, getListID, getData } from '../../redux/listing/actions';
 import {
@@ -59,7 +59,7 @@ class Home extends Component {
 				<Navbar history={this.props.history} location={this.props.location} />
 				<div className="map-list-view">
 					<div className="map-view">
-						<Map properties={properties} active={activeProperty} />
+						<GMap properties={properties} active={activeProperty} />
 					</div>
 					<div className="list-view">
 						<Filter searchProperties={this.searchProperties} />
@@ -69,7 +69,7 @@ class Home extends Component {
 								<Property
 									key={index}
 									property={item}
-									activeProperty={() => this.activeProperty(index)}
+									activeProperty={() => this.activeProperty(item.id)}
 									unActiveProperty={() => this.unActiveProperty()}
 								/>
 							)}
