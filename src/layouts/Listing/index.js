@@ -27,6 +27,7 @@ class Home extends Component {
 			filterView: false,
 			properties: [],
 			preProperties: [],
+			childProperties: [],
 		};
 	}
 
@@ -35,6 +36,7 @@ class Home extends Component {
 			return {
 				preProperties: props.properties,
 				properties: props.properties,
+				childProperties: props.properties,
 			}
 		}
 		return {}
