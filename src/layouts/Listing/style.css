@@ -27,3 +27,7 @@
 	height: calc(100vh - 180px);
 	overflow-y: scroll;
 }
+
+.listing-view .map-list-view .list-view .property-view.filter {
+	height: calc(100vh - 338px);
+}

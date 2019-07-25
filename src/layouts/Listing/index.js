@@ -24,6 +24,7 @@ class Home extends Component {
 		super(props);
 		this.state = {
 			activeProperty: null,
+			filterView: false,
 			properties: [],
 			preProperties: [],
 		};
@@ -86,9 +87,13 @@ class Home extends Component {
 		}
 	}
 
+	setFilterView = () => {
+		this.setState({ setFilterView: !this.state.setFilterView });
+	}
+
 	render() {
 		const { list } = this.props;
-		const { activeProperty, properties } = this.state;
+		const { activeProperty, properties, setFilterView } = this.state;
 		return (
 			<div className="listing-view">
 				<Navbar history={this.props.history} location={this.props.location} />
@@ -99,11 +104,12 @@ class Home extends Component {
 					<div className="list-view">
 						<Filter
 							parentProperties={properties}
+							setFilterView={this.setFilterView}
 							searchProperties={this.searchProperties}
 							filterFavChange={this.filterFavChange}
 						/>
 						<div className="list-view-title">{`Showing ${list.length} matching homes`}</div>
-						<div className="property-view">
+						<div className={setFilterView ? "property-view filter" : "property-view"}>
 							{properties.map((item, index) =>
 								<Property
 									key={index}
