@@ -40,3 +40,43 @@
 	padding: 1px 7px 2px;
 	cursor: pointer;
 }
+
+.filter-view .filter-container {
+	display: flex;
+	padding: 6px 10px;
+	margin-right: 13px;
+  margin-top: 18px;
+	border: 1px solid #e8e8e8;
+	box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.21);
+}
+
+.filter-view .filter-container .fav-filter {
+	display: flex;
+	height: 42px;
+	align-items: center;
+}
+
+.filter-view .filter-container .fav-filter input {
+	margin-right: 10px;
+}
+
+.filter-view .filter-container .select-container {
+	display: flex;
+	padding: 5px;
+}
+
+.filter-view .filter-container .select-container .country-title,
+.filter-view .filter-container .select-container .region-title,
+.filter-view .filter-container .select-container .city-title {
+	width: 85px;
+}
+
+.filter-view .filter-container .select-container .country-select,
+.filter-view .filter-container .select-container .region-select,
+.filter-view .filter-container .select-container .city-select {
+	width: 120px;
+	height: 30px;
+	font-family: GothamRnd;
+	font-size: 16px;
+	color: #444444;
+}
