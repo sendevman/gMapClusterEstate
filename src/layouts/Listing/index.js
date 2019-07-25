@@ -10,7 +10,11 @@ import GMap from '../../components/GMap';
 
 import { getList, getListID, getData } from '../../redux/listing/actions';
 import {
+	listCountriesSelector,
+	listPropertiesSelector,
 	idlistPropertiesSelector,
+	idlistCitiesSelector,
+	idlistRegionsSelector,
 } from '../../redux/listing/selectors';
 
 import './style.css';
@@ -36,7 +40,14 @@ class Home extends Component {
 	}
 
 	componentDidMount() {
+		// this.props.getList(localStorage.getItem('token'), 'cities');
+		this.props.getList(localStorage.getItem('token'), 'countries');
+		// this.props.getList(localStorage.getItem('token'), 'properties');
+		// this.props.getList(localStorage.getItem('token'), 'regions');
+		// this.props.getListID(localStorage.getItem('token'), 'images', 1, 'property');
+		// this.props.getListID(localStorage.getItem('token'), 'cities', 31, 'region');
 		this.props.getListID(localStorage.getItem('token'), 'properties', 3171, 'city');
+		// this.props.getData(localStorage.getItem('token'), 'properties/tools/search');
 	}
 
 	activeProperty = (number) => {
@@ -48,7 +59,31 @@ class Home extends Component {
 	}
 
 	searchProperties = (data) => {
-		this.setState({ properties: data });
+		this.setState({
+			properties: data,
+			childProperties: data,
+		});
+	}
+
+	filterFavChange = (fav) => {
+		const { properties } = this.state;
+		let newProperties = [];
+		if (fav) {
+			if (localStorage.getItem('fav') === null) {
+				this.setState({ properties: [] });
+			} else {
+				_.each(properties, property =>{
+					_.each(JSON.parse(localStorage.getItem('fav')), item => {
+						if (property.id === item) {
+							newProperties.push(property);
+						}
+					})
+				})
+				this.setState({ properties: newProperties });
+			}
+		} else {
+			this.setState({ properties: this.state.childProperties });
+		}
 	}
 
 	render() {
@@ -62,7 +97,11 @@ class Home extends Component {
 						<GMap properties={properties} active={activeProperty} />
 					</div>
 					<div className="list-view">
-						<Filter searchProperties={this.searchProperties} />
+						<Filter
+							parentProperties={properties}
+							searchProperties={this.searchProperties}
+							filterFavChange={this.filterFavChange}
+						/>
 						<div className="list-view-title">{`Showing ${list.length} matching homes`}</div>
 						<div className="property-view">
 							{properties.map((item, index) =>
@@ -82,6 +121,7 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => ({
+	list: listCountriesSelector(state),
 	properties: idlistPropertiesSelector(state),
 });
 
@@ -92,6 +132,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 Home.propTypes = {
+	list: PropTypes.array,
 	properties: PropTypes.array,
 	getList: PropTypes.func.isRequired,
 	getListID: PropTypes.func.isRequired,

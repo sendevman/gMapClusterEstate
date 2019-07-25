@@ -11,18 +11,22 @@ import { getData } from './api';
 function* asyncGetList(param) {
 	const { token, type } = param.payload;
 	const response = yield call(getData, token, type);
+	console.log(response);
 	yield put(setList(response, type));
 }
 
 function* asyncGetListID(param) {
 	const { token, fType, id, sType } = param.payload;
 	const response = yield call(getData, token, `${fType}/${id}/${sType}`);
+	console.log(response);
 	yield put(setListID(response, fType));
 }
 
 function* asyncGetData(param) {
 	const { token, url } = param.payload;
-	yield call(getData, token, url);
+	const response = yield call(getData, token, url);
+	console.log(response);
+	// yield put(setListID(response, fType));
 }
 
 export function* sagaWatcher() {
