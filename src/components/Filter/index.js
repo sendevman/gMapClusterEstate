@@ -36,6 +36,7 @@ class Filter extends React.Component {
 
 	filter = (event) => {
 		this.setState({ filterView: !this.state.filterView });
+		this.props.setFilterView();
 	}
 
 	onChangeFilterFav = (event) => {
@@ -137,6 +138,7 @@ Filter.propTypes = {
 	citiest: PropTypes.array.isRequired,
 	properties: PropTypes.array.isRequired,
 	parentProperties: PropTypes.array.isRequired,
+	setFilterView: PropTypes.func.isRequired,
 	searchProperties: PropTypes.func.isRequired,
 	filterFavChange: PropTypes.func.isRequired,
 };
