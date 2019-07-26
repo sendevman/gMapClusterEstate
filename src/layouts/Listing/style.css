@@ -68,6 +68,10 @@
 		width: 100%;
 	}
 
+	.listing-view .map-list-view .mmap-view.filter {
+		height: calc(100vh - 319px);
+	}
+
 	.listing-view .map-list-view .mlist-view {
 		display: block;
 		width: 100%;
