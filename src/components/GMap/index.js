@@ -11,8 +11,6 @@ import SimpleMarker from '../SimpleMarker';
 import supercluster from 'points-cluster';
 import { GOOGLEAPIKEY } from '../../redux/config';
 
-import './style.css';
-
 export const gMap = ({
   hoverDistance, options,
   mapProps: { center, zoom },
@@ -26,7 +24,7 @@ export const gMap = ({
     center={center}
     zoom={zoom}
     onChange={onChange}
-    onChildMouseEnter={onChildMouseEnter}
+    onChildMouseEnter={(hoverKey, { id }) => onChildMouseEnter(hoverKey, { id }, clusters)}
 		onChildMouseLeave={onChildMouseLeave}
   >
     {
@@ -49,7 +47,8 @@ export const gMapHOC = compose(
       maxZoom: 20,
     },
 		properties: [],
-		active: null,
+    active: null,
+    mobilehovered: () => {},
   }),
   withState(
     'markers',
@@ -77,11 +76,13 @@ export const gMapHOC = compose(
       setMapProps({ center, zoom, bounds });
     },
 
-    onChildMouseEnter: ({ setHoveredMarkerId }) => (hoverKey, { id }) => {
+    onChildMouseEnter: ({ setHoveredMarkerId, mobilehovered }) => (hoverKey, { id }, clusters) => {
+      mobilehovered(clusters[_.findIndex(clusters, cluster => cluster.id === id)]);
       setHoveredMarkerId(id);
     },
 
-    onChildMouseLeave: ({ setHoveredMarkerId }) => () => {
+    onChildMouseLeave: ({ setHoveredMarkerId, mobilehovered }) => () => {
+      mobilehovered(null);
       setHoveredMarkerId(-1);
     },
   }),

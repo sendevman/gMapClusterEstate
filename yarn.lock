@@ -9419,6 +9419,11 @@ test-exclude@^5.2.3:
     read-pkg-up "^4.0.0"
     require-main-filename "^2.0.0"
 
+text-ellipsis@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/text-ellipsis/-/text-ellipsis-1.0.3.tgz#b7991ca1518eaef2603252e26dc6330a61b44348"
+  integrity sha1-t5kcoVGOrvJgMlLibcYzCmG0Q0g=
+
 text-table@0.2.0, text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"

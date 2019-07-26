@@ -93,3 +93,71 @@
 	line-height: 14px;
 	color: #444444;
 }
+
+.word-break {
+	word-break: break-word;
+}
+
+@media only screen and (max-width: 450px) {
+	.property-view-container {
+		width: calc(100% - 2px);
+	}
+
+	.property-view-container:hover {
+
+	}
+
+	.property-view-container .property-image-slider {
+		width: 44%;
+	}
+
+	.property-view-container .property-image-slider .property-image {
+
+	}
+
+	.property-view-container .property-image-slider .property-fav-container {
+
+	}
+
+	.property-view-container .property-data-container {
+		width: 56%;
+	}
+
+	.property-view-container .property-data-container .address {
+		margin-bottom: 8px;
+	}
+
+	.property-view-container .property-data-container .price {
+		margin-bottom: 8px;
+	}
+
+	.property-view-container .property-data-container .price > div {
+		word-break: break-word;
+	}
+
+	.property-data-container .bed-bath-size {
+		margin-bottom: 8px;
+	}
+
+	.property-data-container .mid-border {
+		margin-bottom: 8px;
+	}
+
+	.property-data-container .down-price,
+	.property-data-container .rent-price {
+		margin-bottom: 8px;
+	}
+
+	.property-data-container .down-price > div,
+	.property-data-container .rent-price > div {
+		word-break: break-word;
+	}
+
+	.property-data-container .equity-price {
+		margin-bottom: 8px;
+	}
+
+	.property-data-container .equity-price > div {
+		word-break: break-word;
+	}
+}

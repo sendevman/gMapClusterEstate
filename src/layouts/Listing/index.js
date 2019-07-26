@@ -17,6 +17,7 @@ import {
 	idlistRegionsSelector,
 } from '../../redux/listing/selectors';
 
+import map from '../../assets/img/map.png';
 import './style.css';
 
 class Home extends Component {
@@ -25,6 +26,8 @@ class Home extends Component {
 		this.state = {
 			activeProperty: null,
 			filterView: false,
+			overlayMapList: false,
+			mobilehovered: null,
 			properties: [],
 			preProperties: [],
 			childProperties: [],
@@ -93,9 +96,22 @@ class Home extends Component {
 		this.setState({ setFilterView: !this.state.setFilterView });
 	}
 
+	overlayMapList = () => {
+		this.setState({ overlayMapList: !this.state.overlayMapList });
+	}
+
+	mobilehovered = (item) => {
+		const { properties } = this.state;
+		if (item !== null && item.numPoints === 1) {
+			this.setState({ mobilehovered: properties[_.findIndex(properties, propertie => propertie.id === item.original_id)] })
+		} else {
+			this.setState({ mobilehovered: null });
+		}
+	}
+
 	render() {
 		const { list } = this.props;
-		const { activeProperty, properties, setFilterView } = this.state;
+		const { activeProperty, properties, setFilterView, overlayMapList, mobilehovered } = this.state;
 		return (
 			<div className="listing-view">
 				<Navbar history={this.props.history} location={this.props.location} />
@@ -121,6 +137,45 @@ class Home extends Component {
 								/>
 							)}
 						</div>
+					</div>
+					<div className="mlist-view">
+						<Filter
+							parentProperties={properties}
+							setFilterView={this.setFilterView}
+							searchProperties={this.searchProperties}
+							filterFavChange={this.filterFavChange}
+						/>
+						{!overlayMapList && <div className="list-view-title">{`Showing ${list.length} matching homes`}</div>}
+						{!overlayMapList && <div className={setFilterView ? "property-view filter" : "property-view"}>
+							{properties.map((item, index) =>
+								<Property
+									key={index}
+									mobile
+									property={item}
+									activeProperty={() => this.activeProperty(item.id)}
+									unActiveProperty={() => this.unActiveProperty()}
+								/>
+							)}
+						</div>}
+					</div>
+					{overlayMapList && <div className="mmap-view">
+						<GMap
+							mobilehovered={this.mobilehovered}
+							properties={properties}
+							active={activeProperty}
+						/>
+					</div>}
+					<div className="overlay-container">
+						<div className="overlay-map-list" style={mobilehovered ? { marginBottom: '10px' } : {}}onClick={this.overlayMapList}>
+							<img className="map-icon" src={overlayMapList ? map : map} alt="filter" />
+							{overlayMapList ? 'List' : 'Map'}
+						</div>
+						{mobilehovered && <Property
+							mobile={mobilehovered !== null}
+							property={mobilehovered}
+							activeProperty={() => this.activeProperty(mobilehovered.id)}
+							unActiveProperty={() => this.unActiveProperty()}
+						/>}
 					</div>
 				</div>
 			</div>

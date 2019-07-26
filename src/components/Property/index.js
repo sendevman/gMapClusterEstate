@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import NumberFormat from 'react-number-format';
+import ellipsis from 'text-ellipsis';
 
 import { IMGPATH } from '../../redux/config';
 
@@ -44,7 +45,7 @@ class Property extends React.Component {
 	}
 
 	render() {
-		const { property, activeProperty, unActiveProperty } = this.props;
+		const { mobile, property, activeProperty, unActiveProperty } = this.props;
 		const { fav } = this.state;
 		return (
 			<div className="property-view-container" onMouseOver={activeProperty} onMouseLeave={unActiveProperty}>
@@ -55,7 +56,7 @@ class Property extends React.Component {
 					</div>
 				</div>
 				<div className="property-data-container">
-					<div className="address">{property.address1}</div>
+					<div className="address word-break">{mobile ? ellipsis(property.address1, 17) : property.address1}</div>
 					<div className="price">
 						<NumberFormat
 							thousandSeparator={true}
@@ -66,7 +67,7 @@ class Property extends React.Component {
 							renderText={value => <div>{value}{numConverting(property.purchasePrice).unit}</div>}
 						/>
 					</div>
-					<div className="bed-bath-size">
+					<div className="bed-bath-size word-break">
 						{`${property.beds} beds ${property.baths} baths ${property.buildingSize}m`}
 					</div>
 					<div className="mid-border"></div>
@@ -97,12 +98,14 @@ class Property extends React.Component {
 }
 
 Property.propTypes = {
+	mobile: PropTypes.bool,
 	property: PropTypes.object.isRequired,
 	activeProperty: PropTypes.func.isRequired,
 	unActiveProperty: PropTypes.func.isRequired,
 };
 
 Property.defaultProps = {
+	mobile: false,
 };
 
 export default Property;

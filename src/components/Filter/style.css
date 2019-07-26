@@ -7,7 +7,7 @@
 	box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.21);
 	border-radius: 4px;
 	border: 1px solid #e8e8e8;
-	width: 72%;
+	width: 64%;
 	display: flex;
   align-items: center;
 }
@@ -25,7 +25,7 @@
 	border: 1px solid #e8e8e8;
 	box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.21);
 	border-radius: 4px;
-	width: calc(28% - 12px);
+	width: calc(36% - 12px);
 	display: flex;
 	align-items: center;
 	margin-right: 13px;
@@ -48,6 +48,10 @@
   margin-top: 18px;
 	border: 1px solid #e8e8e8;
 	box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.21);
+}
+
+.filter-view .filter-container > div {
+	margin-right: 20px;
 }
 
 .filter-view .filter-container .fav-filter {
@@ -79,4 +83,32 @@
 	font-family: GothamRnd;
 	font-size: 16px;
 	color: #444444;
+}
+
+@media only screen and (max-width: 450px) {
+	.filter-view .search-view {
+		width: 64%;
+	}
+	
+	.filter-view .search-view .search-input {
+	}
+	
+	.filter-view .filter-btn-view {
+    width: calc(36% - 12px);
+    margin-right: 0;
+	}
+	
+	.filter-view .filter-container {
+    margin-right: 0;
+	}
+	
+	.filter-view .filter-container > div {
+		margin-right: 0;
+	}
+	
+	.filter-view .filter-container .select-container .country-select,
+	.filter-view .filter-container .select-container .region-select,
+	.filter-view .filter-container .select-container .city-select {
+		width: 95px;
+	}
 }

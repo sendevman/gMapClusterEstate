@@ -67,7 +67,7 @@ class Filter extends React.Component {
 					</button>
 				</div>
 				{filterView && <div className="filter-container">
-					<div style={{ marginRight: '20px' }}>
+					<div>
 						<div className="select-container">
 							<label className="country-title">Countries</label>
 							<select className="country-select" defaultValue="Country" onChange={(event) => this.selectOption('country', 'regions', event)}>
