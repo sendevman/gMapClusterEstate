@@ -5,6 +5,8 @@ import NumberFormat from 'react-number-format';
 import { Motion } from 'react-motion';
 import { clusterMarkerHOC } from '../ClusterMarker';
 
+import "./style.css"
+
 const numConverting = (value) => {
 	if (value / 1000000000 === parseInt(value / 1000000000)) {
 		return { value: value / 1000000000, unit: 'M' };
@@ -35,7 +37,7 @@ export const simpleMarker = ({
 					prefix={'IDR '}
 					value={numConverting(price).value}
 					displayType={'text'}
-					renderText={value => <div style={{ whiteSpace: 'nowrap' }}>{`${value}${numConverting(price).unit}`}</div>}
+					renderText={value => <div>{`${value}${numConverting(price).unit}`}</div>}
 				/>
       </div>
     )

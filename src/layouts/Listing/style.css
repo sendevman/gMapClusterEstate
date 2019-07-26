@@ -1,6 +1,5 @@
 .listing-view .map-list-view {
 	display: flex;
-	
 }
 
 .listing-view .map-list-view .map-view {
@@ -30,4 +29,106 @@
 
 .listing-view .map-list-view .list-view .property-view.filter {
 	height: calc(100vh - 338px);
+}
+
+.listing-view .map-list-view .overlay-map-list {
+	display: none;
+}
+
+.listing-view .map-list-view .mmap-view {
+	display: none;	
+}
+
+.listing-view .map-list-view .mlist-view {
+	display: none;
+}
+
+@media only screen and (max-width: 450px) {
+	.listing-view .map-list-view {
+		width: 100%;
+		position: relative;
+		display: block;
+	}
+
+	.listing-view .map-list-view .map-view {
+		display: none;
+	}
+	
+	.listing-view .map-list-view .map-view.active {
+		display: block;
+	}
+	
+	.listing-view .map-list-view .list-view {
+		display: none;
+	}
+
+	.listing-view .map-list-view .mmap-view {
+		display: block;
+		height: calc(100vh - 160px);
+		width: 100%;
+	}
+
+	.listing-view .map-list-view .mlist-view {
+		display: block;
+		width: 100%;
+		padding: 18px 10px 0px;
+    margin: 0;
+	}
+	
+	.listing-view .map-list-view .mlist-view .list-view-title {
+		height: inherit;
+	}
+	
+	.listing-view .map-list-view .mlist-view .property-view {
+		height: calc(100vh - 185px);
+		overflow-y: scroll;
+	}
+	
+	.listing-view .map-list-view .mlist-view .property-view.filter {
+		height: calc(100vh - 343px);
+	}
+
+	.listing-view .map-list-view .overlay-container {
+		position: absolute;
+		bottom: 0px;
+		left: 0;
+		right: 0;
+
+		display: flex;
+		flex-flow: column;
+    align-items: center;
+		justify-content: center;
+	}
+
+	.listing-view .map-list-view .overlay-container .overlay-map-list {
+
+		display: flex;
+    align-items: center;
+		justify-content: center;
+
+		width: 120px;
+		height: 40px;
+
+		margin-bottom: 30px;
+
+		background: #FFFFFF;
+		box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.3);
+		border-radius: 100px;
+		text-align: center;
+
+		font-family: GothamRnd;
+		font-size: 18px;
+		line-height: 22px;
+
+		color: #444444;
+
+	}
+
+	.listing-view .map-list-view .overlay-container .overlay-map-list .map-icon {
+		margin-right: 8px;
+	}
+
+	.listing-view .map-list-view .overlay-container .property-view-container {
+		width: calc(100% - 22px);
+	}
 }

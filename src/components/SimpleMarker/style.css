@@ -13,7 +13,7 @@
 
 .map_marker {
 	position: relative;
-	width: fit-content;
+	width: max-content;
 	padding: 10px;
 	height: 34px;
 	background: #E9FFF3;
