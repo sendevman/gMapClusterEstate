@@ -158,7 +158,7 @@ class Home extends Component {
 							)}
 						</div>}
 					</div>
-					{overlayMapList && <div className="mmap-view">
+					{overlayMapList && <div className={setFilterView ? "mmap-view filter" : "mmap-view"}>
 						<GMap
 							mobilehovered={this.mobilehovered}
 							properties={properties}
