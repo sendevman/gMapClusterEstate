@@ -4,6 +4,7 @@ import {
 	GET_LIST_START,
 	GET_LIST_ID_START,
 	GET_DATA_START,
+	GET_COORDINATE_PROPERTY_START,
 	SET_LIST,
 	SET_LIST_ID,
 } from './constants';
@@ -31,4 +32,9 @@ export const setListID = createAction(
 export const getData = createAction(
 	GET_DATA_START,
 	(token, url) => ({ token, url }),
+);
+
+export const getCoordinateProperty = createAction(
+	GET_COORDINATE_PROPERTY_START,
+	(token, data) => ({ token, data }),
 );
