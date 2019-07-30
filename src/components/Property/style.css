@@ -103,20 +103,8 @@
 		width: calc(100% - 2px);
 	}
 
-	.property-view-container:hover {
-
-	}
-
 	.property-view-container .property-image-slider {
 		width: 44%;
-	}
-
-	.property-view-container .property-image-slider .property-image {
-
-	}
-
-	.property-view-container .property-image-slider .property-fav-container {
-
 	}
 
 	.property-view-container .property-data-container {

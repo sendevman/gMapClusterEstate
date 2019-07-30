@@ -102,7 +102,7 @@ class Home extends Component {
 
 	mobilehovered = (item) => {
 		const { properties } = this.state;
-		if (item !== null && item.numPoints === 1) {
+		if (item !== null) {
 			this.setState({ mobilehovered: properties[_.findIndex(properties, propertie => propertie.id === item.original_id)] })
 		} else {
 			this.setState({ mobilehovered: null });
@@ -159,6 +159,7 @@ class Home extends Component {
 						</div>}
 					</div>
 					{overlayMapList && <div className={setFilterView ? "mmap-view filter" : "mmap-view"}>
+						{mobilehovered !== null && <div className="map-overlay" onClick={() => { console.log('herehere'); this.mobilehovered(null)}}></div>}
 						<GMap
 							mobilehovered={this.mobilehovered}
 							properties={properties}

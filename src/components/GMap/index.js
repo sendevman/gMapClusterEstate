@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
+import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import defaultProps from 'recompose/defaultProps';
 import withState from 'recompose/withState';
@@ -10,11 +11,13 @@ import ClusterMarker from '../ClusterMarker';
 import SimpleMarker from '../SimpleMarker';
 import supercluster from 'points-cluster';
 import { GOOGLEAPIKEY } from '../../redux/config';
+import { getCoordinateProperty } from '../../redux/listing/actions';
 
 export const gMap = ({
   hoverDistance, options,
   mapProps: { center, zoom },
   onChange, onChildMouseEnter, onChildMouseLeave,
+  mobilehovered,
   clusters,
 }) => (
   <GoogleMapReact
@@ -25,11 +28,11 @@ export const gMap = ({
     zoom={zoom}
     onChange={onChange}
     onChildMouseEnter={(hoverKey, { id }) => onChildMouseEnter(hoverKey, { id }, clusters)}
-		onChildMouseLeave={onChildMouseLeave}
+    onChildMouseLeave={onChildMouseLeave}
   >
     {
       clusters
-        .map(cluster =>
+        .map(cluster => 
 					cluster.numPoints === 1
             ? <SimpleMarker key={cluster.id} {...cluster} />
             : <ClusterMarker key={cluster.id} {...cluster} />
@@ -38,7 +41,12 @@ export const gMap = ({
   </GoogleMapReact>
 )
 
+const mapDispatchToProps = dispatch => ({
+	getList: (token, data) => dispatch(getCoordinateProperty(token, data)),
+});
+
 export const gMapHOC = compose(
+  connect(null, mapDispatchToProps),
   defaultProps({
     clusterRadius: 60,
     hoverDistance: 30,
@@ -49,6 +57,7 @@ export const gMapHOC = compose(
 		properties: [],
     active: null,
     mobilehovered: () => {},
+    getList: () => {},
   }),
   withState(
     'markers',
@@ -71,18 +80,38 @@ export const gMapHOC = compose(
       zoom: 10,
     }
   ),
+  withState(
+    'initUpdate',
+    'setInitUpdate',
+		true
+  ),
   withHandlers({
-    onChange: ({ setMapProps }) => ({ center, zoom, bounds }) => {
+    onChange: ({ setMapProps, getList, initUpdate, setInitUpdate }) => ({ center, zoom, bounds }) => {
+      if (initUpdate) {
+        setInitUpdate(false);
+      } else {
+        const rootWidth = document.getElementById('root').getBoundingClientRect().width;
+        let mapViewWidth = 0;
+        if (rootWidth > 450) {
+          mapViewWidth = document.getElementsByClassName('map-view')[0].getBoundingClientRect().width;
+        } else {
+          const element = document.getElementsByClassName('mmap-view');
+          if (element.length > 0) {
+            mapViewWidth = document.getElementsByClassName('mmap-view')[0].getBoundingClientRect().width;
+          }
+        }
+        
+        const radius = 156543.03392 * Math.cos(center.lat * Math.PI / 180) / Math.pow(2, zoom) * mapViewWidth / 1000;
+        getList(localStorage.getItem('token'), { lat: center.lat, lng: center.lng, radius });
+      }
       setMapProps({ center, zoom, bounds });
     },
 
     onChildMouseEnter: ({ setHoveredMarkerId, mobilehovered }) => (hoverKey, { id }, clusters) => {
-      mobilehovered(clusters[_.findIndex(clusters, cluster => cluster.id === id)]);
       setHoveredMarkerId(id);
     },
 
     onChildMouseLeave: ({ setHoveredMarkerId, mobilehovered }) => () => {
-      mobilehovered(null);
       setHoveredMarkerId(-1);
     },
   }),
@@ -110,8 +139,8 @@ export const gMapHOC = compose(
 		}
   ),
   withPropsOnChange(
-    ['mapProps', 'getCluster'],
-    ({ mapProps, getCluster }) => ({
+    ['mapProps', 'getCluster', 'mobilehovered'],
+    ({ mapProps, getCluster, mobilehovered }) => ({
       clusters: mapProps.bounds
 				? getCluster(mapProps)
           .map(({ x, y, wx, wy, numPoints, points }) => ({
@@ -121,7 +150,8 @@ export const gMapHOC = compose(
             numPoints,
 						id: `${numPoints}_${points[0].id}`,
 						original_id: points[_.findIndex(points, point => point.lng === x && point.lat === y)].id,
-						price: points[_.findIndex(points, point => point.lng === x && point.lat === y)].price,
+            price: points[_.findIndex(points, point => point.lng === x && point.lat === y)].price,
+            mobilehovered,
           }))
 			  : [],
 		})
@@ -133,7 +163,7 @@ export const gMapHOC = compose(
         .map(cluster => ({
           ...cluster,
 					hovered: cluster.id === hoveredMarkerId,
-					active: parseInt(active) === cluster.original_id,
+          active: parseInt(active) === cluster.original_id,
         })),
     })
 	),

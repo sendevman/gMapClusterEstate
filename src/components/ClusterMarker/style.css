@@ -25,3 +25,7 @@
   align-items: center;
   justify-content: center;
 }
+
+.cluster-text {
+  z-index: 100;
+}

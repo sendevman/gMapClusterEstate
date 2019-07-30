@@ -50,7 +50,7 @@ class Property extends React.Component {
 		return (
 			<div className="property-view-container" onMouseOver={activeProperty} onMouseLeave={unActiveProperty}>
 				<div className="property-image-slider">
-					<img className="property-image" src={`${IMGPATH}/${property.Images[0].url}`} alt="" />
+					<img className="property-image" src={property.Images ? `${IMGPATH}/${property.Images[0].url}` : ''} alt="" />
 					<div className="property-fav-container" onClick={() => this.favClick(property)}>
 						<img className="property-fav-icon" src={(fav.length > 0 && _.findIndex(fav, item => item === property.id) > -1) ? bfavor : favor} alt="" />
 					</div>

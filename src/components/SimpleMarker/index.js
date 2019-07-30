@@ -17,7 +17,7 @@ const numConverting = (value) => {
 }
 
 export const simpleMarker = ({
-  active, price, defaultMotionStyle, motionStyle,
+  active, price, defaultMotionStyle, motionStyle, mobilehovered, original_id, numPoints,
 }) => (
   <Motion
     defaultStyle={defaultMotionStyle}
@@ -26,10 +26,11 @@ export const simpleMarker = ({
   {
     ({ scale }) => (
       <div
-				className={active ? "map_marker active" : "map_marker"}
+        className={active ? "simple-marker active" : "simple-marker"}
         style={{
           transform: `translate3D(0,0,0) scale(${scale}, ${scale})`,
         }}
+        onClick={() => { console.log('here1'); mobilehovered({ original_id, numPoints })}}
       >
 				<NumberFormat
 					thousandSeparator={true}
@@ -51,7 +52,8 @@ export const simpleMarkerHOC = compose(
     defaultScale: 1,
 		hoveredScale: 0.7,
 		active: false,
-		price: 0,
+    price: 0,
+    mobilehovered: () => {}
   }),
   clusterMarkerHOC
 );

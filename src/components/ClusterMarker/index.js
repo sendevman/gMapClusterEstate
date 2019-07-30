@@ -9,7 +9,7 @@ import './style.css';
 
 export const clusterMarker = ({
   text,
-  defaultMotionStyle, motionStyle,
+  defaultMotionStyle, motionStyle, mobilehovered, original_id, numPoints,
 }) => (
   <Motion
     defaultStyle={defaultMotionStyle}
@@ -22,6 +22,7 @@ export const clusterMarker = ({
         style={{
           transform: `translate3D(0,0,0) scale(${scale}, ${scale})`,
         }}
+        onClick={() => { console.log('here2'); mobilehovered({ original_id, numPoints })}}
       >
         <div
           className="cluster-text"
