@@ -1,0 +1,117 @@
+.properties-page-view {
+
+}
+
+.properties-page-view .properties-container {
+	position: relative;
+	width: 100%;
+}
+
+.properties-page-view .properties-container .properties-image-slider {
+	max-height: 450px;
+	overflow: hidden;
+}
+
+.properties-page-view .properties-container .properties-image-slider .properties-slider-image {
+	width: 100%;
+}
+
+.properties-page-view .properties-container .properties-data-container {
+	width: calc(100vw - 450px);
+	padding: 40px;
+}
+
+.properties-page-view .properties-container .properties-data-container .address {
+	font-family: GothamRnd;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 24px;
+
+	color: #444444;
+
+	padding-bottom: 5px;
+}
+
+.properties-page-view .properties-container .properties-data-container .bed-bath-size {
+	font-family: GothamRnd;
+	font-size: 16px;
+	line-height: 19px;
+
+	color: #444444;
+
+	padding-top: 10px;
+}
+
+.properties-page-view .properties-container .properties-data-container .description {
+	font-family: GothamRnd;
+	font-size: 14px;
+	line-height: 20px;
+	
+	color: #888888;
+
+	padding-top: 15px;
+}
+
+.properties-page-view .properties-container .properties-data-container .mid-border {
+	border: 0.5px solid #D6D6D6;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.properties-page-view .properties-container .properties-data-container .mid-title {
+	font-family: GothamRnd;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 24px;
+
+	color: #444444;
+	padding-bottom: 20px;
+}
+
+.properties-page-view .properties-container .properties-data-container .mid-container .mid-container-item {
+	display: inline-block;
+	width: 230px;
+	padding-right: 10px;
+	padding-bottom: 15px;
+	vertical-align: top;
+}
+
+.properties-page-view .properties-container .properties-data-container .mid-container .mid-container-item ul {
+	margin-left: -15px;
+}
+
+.properties-page-view .properties-container .properties-data-container .mid-container .mid-container-item .mid-container-item-title {
+	font-family: GothamRnd;
+	font-weight: 900;
+	font-size: 18px;
+	line-height: 22px;
+	
+	color: #444444;	
+	padding-bottom: 5px;
+}
+
+.properties-page-view .properties-container .properties-data-container .mid-container .mid-container-item .mid-container-item-content {
+	font-family: GothamRnd;
+	font-size: 16px;
+	line-height: 19px;
+	
+	color: #444444;
+}
+
+.properties-page-view .properties-container .properties-side-bar {
+	position: absolute;
+	z-index: 100;
+	width: 387px;
+	height: 674px;
+	top: 355px;
+	right: 40px;
+	background: #FFFFFF;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+	border-radius: 5px;
+}
+
+@media only screen and (max-width: 450px) {
+	.properties-page-view {
+
+	}
+}

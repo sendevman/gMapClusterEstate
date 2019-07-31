@@ -45,7 +45,7 @@ class Property extends React.Component {
 	}
 
 	render() {
-		const { mobile, property, activeProperty, unActiveProperty } = this.props;
+		const { history, mobile, property, activeProperty, unActiveProperty } = this.props;
 		const { fav } = this.state;
 		return (
 			<div className="property-view-container" onMouseOver={activeProperty} onMouseLeave={unActiveProperty}>
@@ -55,7 +55,7 @@ class Property extends React.Component {
 						<img className="property-fav-icon" src={(fav.length > 0 && _.findIndex(fav, item => item === property.id) > -1) ? bfavor : favor} alt="" />
 					</div>
 				</div>
-				<div className="property-data-container">
+				<div className="property-data-container" onClick={() => history.push(`/properties/${property.id}`)}>
 					<div className="address word-break">{mobile ? ellipsis(property.address1, 17) : property.address1}</div>
 					<div className="price">
 						<NumberFormat
@@ -102,6 +102,7 @@ Property.propTypes = {
 	property: PropTypes.object.isRequired,
 	activeProperty: PropTypes.func.isRequired,
 	unActiveProperty: PropTypes.func.isRequired,
+	history: PropTypes.object.isRequired,
 };
 
 Property.defaultProps = {

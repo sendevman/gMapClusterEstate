@@ -20,7 +20,7 @@ import {
 import map from '../../assets/img/map.png';
 import './style.css';
 
-class Home extends Component {
+class Listing extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -110,11 +110,11 @@ class Home extends Component {
 	}
 
 	render() {
-		const { list } = this.props;
+		const { list, location, history } = this.props;
 		const { activeProperty, properties, setFilterView, overlayMapList, mobilehovered } = this.state;
 		return (
 			<div className="listing-view">
-				<Navbar history={this.props.history} location={this.props.location} />
+				<Navbar history={history} location={location} />
 				<div className="map-list-view">
 					<div className="map-view">
 						<GMap properties={properties} active={activeProperty} />
@@ -131,6 +131,7 @@ class Home extends Component {
 							{properties.map((item, index) =>
 								<Property
 									key={index}
+									history={history}
 									property={item}
 									activeProperty={() => this.activeProperty(item.id)}
 									unActiveProperty={() => this.unActiveProperty()}
@@ -150,6 +151,7 @@ class Home extends Component {
 							{properties.map((item, index) =>
 								<Property
 									key={index}
+									history={history}
 									mobile
 									property={item}
 									activeProperty={() => this.activeProperty(item.id)}
@@ -195,18 +197,19 @@ const mapDispatchToProps = dispatch => ({
 	getData: (token, url) => dispatch(getData(token, url)),
 });
 
-Home.propTypes = {
+Listing.propTypes = {
 	list: PropTypes.array,
 	properties: PropTypes.array,
 	getList: PropTypes.func.isRequired,
 	getListID: PropTypes.func.isRequired,
 	getData: PropTypes.func.isRequired,
 	history: PropTypes.object.isRequired,
+	location: PropTypes.object.isRequired,
 };
 
-Home.defaultProps = {
+Listing.defaultProps = {
 	list: [],
 	properties: [],
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Listing);

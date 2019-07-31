@@ -30,7 +30,9 @@ code {
     monospace;
 }
 
-
+.word-break {
+	word-break: break-word;
+}
 
 /* --primary-color: #2ecc71;
 --secondary-color: #1a73e8;
