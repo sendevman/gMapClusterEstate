@@ -70,7 +70,7 @@ class Sidebar extends React.Component {
 							Initial down payment
 						</div>
 						<div className="payment-item-content">
-							<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', border: '1px solid #D6D6D6', padding: '10px', borderRadius: '5px' }}>
+							<div style={{ display: 'flex', alignItems: 'center', border: '1px solid #D6D6D6', padding: '10px', borderRadius: '5px', width: '100%' }}>
 								<div style={{ marginRight: '5px' }}>{'Rp. '}</div>
 								<input style={{ width: '250px', border: 'none', color: '#444444' }} className="" type="number" onChange={this.onChangeInit} defaultValue={parseInt(property.purchasePrice * Math.pow(1.055, 3) * 0.02)} min={`${parseInt(property.purchasePrice * Math.pow(1.055, 3) * 0.02)}`} max={`${property.purchasePrice * Math.pow(1.055, 3) * 0.1}`} />
 							</div>

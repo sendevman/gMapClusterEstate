@@ -11,10 +11,7 @@ import GMap from '../../components/GMap';
 import { getList, getListID, getData } from '../../redux/listing/actions';
 import {
 	listCountriesSelector,
-	listPropertiesSelector,
 	idlistPropertiesSelector,
-	idlistCitiesSelector,
-	idlistRegionsSelector,
 } from '../../redux/listing/selectors';
 
 import map from '../../assets/img/map.png';
@@ -46,14 +43,8 @@ class Listing extends Component {
 	}
 
 	componentDidMount() {
-		// this.props.getList(localStorage.getItem('token'), 'cities');
 		this.props.getList(localStorage.getItem('token'), 'countries');
-		// this.props.getList(localStorage.getItem('token'), 'properties');
-		// this.props.getList(localStorage.getItem('token'), 'regions');
-		// this.props.getListID(localStorage.getItem('token'), 'images', 1, 'property');
-		// this.props.getListID(localStorage.getItem('token'), 'cities', 31, 'region');
 		this.props.getListID(localStorage.getItem('token'), 'properties', 3171, 'city');
-		// this.props.getData(localStorage.getItem('token'), 'properties/tools/search');
 	}
 
 	activeProperty = (number) => {

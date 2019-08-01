@@ -27,6 +27,7 @@ class Properties extends Component {
 					<Slider property={property} />
 					<Sidebar property={property} />
 					<PropertyData property={property} />
+					<button className="schedule">Click to schedule a private tour</button>
 				</div>}
 			</div>
 		);
