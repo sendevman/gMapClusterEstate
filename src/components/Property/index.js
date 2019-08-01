@@ -59,8 +59,8 @@ class Property extends React.Component {
 					<div className="address word-break">{mobile ? ellipsis(property.address1, 17) : property.address1}</div>
 					<div className="price">
 						<NumberFormat
-							thousandSeparator={true}
-							decimalSeparator={'.'}
+							thousandSeparator = {'.'}
+							decimalSeparator={','}
 							prefix={'IDR '}
 							value={numConverting(property.purchasePrice).value}
 							displayType={'text'}
@@ -73,8 +73,8 @@ class Property extends React.Component {
 					<div className="mid-border"></div>
 					<div className="down-price">
 						<NumberFormat
-							thousandSeparator={true}
-							decimalSeparator={'.'}
+							thousandSeparator = {'.'}
+							decimalSeparator={','}
 							prefix={'IDR '}
 							value={numConverting(property.purchasePrice).value}
 							displayType={'text'}
@@ -83,8 +83,8 @@ class Property extends React.Component {
 					</div>
 					<div className="rent-price">
 						<NumberFormat
-							thousandSeparator={true}
-							decimalSeparator={'.'}
+							thousandSeparator = {'.'}
+							decimalSeparator={','}
 							prefix={'IDR '}
 							value={numConverting(property.rentPrice).value}
 							displayType={'text'}

@@ -10,6 +10,8 @@
 .properties-page-view .properties-container .properties-image-slider {
 	max-height: 450px;
 	overflow: hidden;
+	display: flex;
+  align-items: center;
 }
 
 .properties-page-view .properties-container .properties-image-slider .properties-slider-image {
@@ -102,7 +104,7 @@
 	position: absolute;
 	z-index: 100;
 	width: 387px;
-	height: 674px;
+	/* height: 674px; */
 	top: 355px;
 	right: 40px;
 	background: #FFFFFF;
@@ -110,8 +112,175 @@
 	border-radius: 5px;
 }
 
-@media only screen and (max-width: 450px) {
-	.properties-page-view {
+.properties-page-view .properties-container .properties-side-bar .sale-monthly {
+	display: flex;
+	border-bottom: 1px solid #D6D6D6;
+}
 
-	}
+.properties-page-view .properties-container .properties-side-bar .sale-monthly .for-sale {
+	border-right: 1px solid #D6D6D6;
+}
+
+.properties-page-view .properties-container .properties-side-bar .sale-monthly .for-sale,
+.properties-page-view .properties-container .properties-side-bar .sale-monthly .for-monthly {
+	width: 50%;
+	padding: 26px 16px;
+}
+
+.properties-page-view .properties-container .properties-side-bar .sale-monthly .for-sale .title,
+.properties-page-view .properties-container .properties-side-bar .sale-monthly .for-monthly .title {
+	font-family: GothamRnd;
+	font-size: 14px;
+	line-height: 17px;
+	
+	padding-bottom: 8px;
+
+	color: #888888;
+}
+
+.properties-page-view .properties-container .properties-side-bar .sale-monthly .for-sale .content,
+.properties-page-view .properties-container .properties-side-bar .sale-monthly .for-monthly .content {
+	font-family: GothamRnd;
+	font-size: 16px;
+	font-weight: 900;
+	line-height: 22px;
+
+	color: #333333;
+}
+
+.properties-page-view .properties-container .properties-side-bar .payment {
+	padding: 23px 19px 0;
+}
+
+.properties-page-view .properties-container .properties-side-bar .payment .payment-item .payment-item-title {
+	font-family: GothamRnd;
+	font-size: 12px;
+	font-weight: 900;
+	line-height: 14px;
+	
+	color: #1873E8;
+	display: flex;
+	align-items: center;
+}
+
+.properties-page-view .properties-container .properties-side-bar .payment .payment-item .payment-item-title .payment-point {
+	width: 7px;
+	height: 7px;
+	border-radius: 3.5px;
+
+	background: #1873E8;
+
+	margin-right: 6px;
+}
+
+.properties-page-view .properties-container .properties-side-bar .payment .payment-item .payment-item-content-no-border,
+.properties-page-view .properties-container .properties-side-bar .payment .payment-item .payment-item-content {
+	/* height: 50px; */
+	border-left: 1px solid #D6D6D6;
+
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-bottom: 20px;
+	margin-left: 3px;
+
+	font-family: GothamRnd;
+	font-size: 16px;
+	line-height: 19px;
+
+	color: #444444;
+	display: flex;
+}
+
+.properties-page-view .properties-container .properties-side-bar .payment .payment-item .payment-item-content-no-border {
+	border: none;
+}
+
+.properties-page-view .properties-container .properties-side-bar .house-price {
+	font-family: GothamRnd;
+	font-size: 16px;
+	line-height: 19px;
+	text-align: center;
+	
+	color: #333333;
+	margin-bottom: 23px;
+}
+
+.properties-page-view .properties-container .properties-side-bar .you-choose {
+	font-family: GothamRnd;
+	font-size: 12px;
+	font-weight: 900;
+	line-height: 14px;
+	text-align: center;
+	
+	color: #1873E8;
+	margin-bottom: 20px;
+}
+
+.properties-page-view .properties-container .properties-side-bar .buy-sell {
+	display: flex;
+}
+
+.properties-page-view .properties-container .properties-side-bar .buy-sell .mid-gap {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.properties-page-view .properties-container .properties-side-bar .buy-sell .mid-gap .mid-v-border {
+	border: 0.5px solid #D6D6D6;
+	width: 0px;
+	height: 40px;
+}
+
+.properties-page-view .properties-container .properties-side-bar .buy-sell .mid-gap .mid-or {
+	font-family: GothamRnd;
+	font-size: 8px;
+	line-height: 10px;
+	text-align: center;
+
+	color: #D6D6D6;
+	padding: 3px 0;
+}
+
+.properties-page-view .properties-container .properties-side-bar .buy-sell .for-buy,
+.properties-page-view .properties-container .properties-side-bar .buy-sell .for-sell {
+	width: 50%;
+	padding: 26px 16px;
+}
+
+.properties-page-view .properties-container .properties-side-bar .buy-sell .for-buy .title,
+.properties-page-view .properties-container .properties-side-bar .buy-sell .for-sell .title {
+	font-family: GothamRnd;
+	font-size: 16px;
+	font-weight: 900;
+	line-height: 19px;
+	text-align: center;
+	
+	padding-bottom: 5px;
+
+	color: #333333;
+}
+
+.properties-page-view .properties-container .properties-side-bar .buy-sell .for-buy .content,
+.properties-page-view .properties-container .properties-side-bar .buy-sell .for-sell .content {
+	font-family: GothamRnd;
+	font-size: 12px;
+	line-height: 14px;
+
+	color: #888888;
+}
+
+.properties-page-view .properties-container .properties-side-bar .schedule {
+	width: 100%;
+	height: 50px;
+	background: linear-gradient(180deg, #1B73E9 0%, #1A4AE8 100%);
+
+	font-family: GothamRnd;
+	font-size: 16px;
+	font-weight: 900;
+	line-height: 19px;
+	text-align: center;
+
+	color: #FFFFFF;
 }
