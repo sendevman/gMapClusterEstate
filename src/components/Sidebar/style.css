@@ -1,0 +1,46 @@
+
+.properties-side-bar .payment {
+	padding: 23px 19px 0;
+}
+
+.properties-side-bar .payment .payment-item .payment-item-title {
+	font-family: GothamRnd;
+	font-size: 12px;
+	font-weight: 900;
+	line-height: 14px;
+	
+	color: #1873E8;
+	display: flex;
+	align-items: center;
+}
+
+.properties-side-bar .payment .payment-item .payment-item-title .payment-point {
+	width: 7px;
+	height: 7px;
+	border-radius: 3.5px;
+
+	background: #1873E8;
+
+	margin-right: 6px;
+}
+
+.properties-side-bar .payment .payment-item .payment-item-content-no-border,
+.properties-side-bar .payment .payment-item .payment-item-content {
+	border-left: 1px solid #D6D6D6;
+
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-bottom: 20px;
+	margin-left: 3px;
+
+	font-family: GothamRnd;
+	font-size: 16px;
+	line-height: 19px;
+
+	color: #444444;
+	display: flex;
+}
+
+.properties-side-bar .payment .payment-item .payment-item-content-no-border {
+	border: none;
+}

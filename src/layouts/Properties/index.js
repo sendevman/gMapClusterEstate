@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import NumberFormat from 'react-number-format';
 import _ from 'lodash';
 
 import Navbar from '../../components/Navbar';
-
-import { IMGPATH } from '../../redux/config';
+import Sidebar from '../../components/Sidebar';
+import Slider from '../../components/Slider';
 
 import { getProperty } from '../../redux/properties/actions';
 import {
 	propertySelector,
 } from '../../redux/properties/selectors';
+
+import favor from '../../assets/img/hard.png';
+import bfavor from '../../assets/img/bluehard.png';
 
 import './style.css';
 
@@ -21,6 +23,7 @@ class Properties extends Component {
 		this.state = {
 			initialDown: 0,
 			overValue: 0,
+			fav: JSON.parse(localStorage.getItem('fav')),
 		};
 	}
 
@@ -28,192 +31,38 @@ class Properties extends Component {
 		this.props.getProperty(localStorage.getItem('token'), this.props.match.params.id);
 	}
 
-	onChangeInit = (event) => {
-		if (event.target.value < parseInt(this.props.property.purchasePrice * Math.pow(1.055, 3) * 0.02)) {
-			this.setState({
-				initialDown: event.target.value,
-				overValue: -1,
-			});
-		} else if (event.target.value > parseInt(this.props.property.purchasePrice * Math.pow(1.055, 3) * 0.1)) {
-			this.setState({
-				initialDown: event.target.value,
-				overValue: 1,
-			});
+	favClick = (property) => {
+		const { fav } = this.state;
+		if (_.findIndex(fav, item => item === property.id) > -1) {
+			localStorage.setItem('fav', JSON.stringify(_.filter(JSON.parse(localStorage.getItem('fav')), item => item !== property.id)));
 		} else {
-			this.setState({
-				initialDown: event.target.value,
-				overValue: 0,
-			});
+			if (localStorage.getItem('fav') === null) {
+				localStorage.setItem('fav', JSON.stringify([property.id]));
+			} else {
+				localStorage.setItem('fav', JSON.stringify(JSON.parse(localStorage.getItem('fav')).concat([property.id])));
+			}
 		}
+		this.setState({
+			fav: JSON.parse(localStorage.getItem('fav')),
+		})
 	}
 
 	render() {
 		const { history, location, property } = this.props;
-		const { initialDown, overValue } = this.state;
+		const { fav } = this.state;
 		return (
 			<div className="properties-page-view">
 				<Navbar history={history} location={location} />
 				{property.address1 && <div className="properties-container">
-					<div className="properties-image-slider">
-						<img className="properties-slider-image" src={property.Images ? `${IMGPATH}/${property.Images[0].url}` : ''} alt="" />
-					</div>
-					<div className="properties-side-bar">
-						<div className="sale-monthly">
-							<div className="for-sale">
-								<div className="title">For sale</div>
-								<div className="content">
-									<NumberFormat
-										thousandSeparator = {'.'}
-										decimalSeparator={','}
-										prefix={'Rp. '}
-										value={property.purchasePrice}
-										displayType={'text'}
-									/>
-								</div>
-							</div>
-							<div className="for-monthly">
-								<div className="title">Monthly payment</div>
-								<div className="content">
-									<NumberFormat
-										thousandSeparator = {'.'}
-										decimalSeparator={','}
-										prefix={'Rp. '}
-										value={property.rentPrice}
-										displayType={'text'}
-									/>
-								</div>
-							</div>
-						</div>
-						<div className="payment">
-							<div className="payment-item">
-								<div className="payment-item-title">
-									<div className="payment-point"></div>
-									Initial down payment
-								</div>
-								<div className="payment-item-content">
-									<input style={{ width: '250px' }} className="" type="number" onChange={this.onChangeInit} defaultValue={parseInt(property.purchasePrice * Math.pow(1.055, 3) * 0.02)} min={`${parseInt(property.purchasePrice * Math.pow(1.055, 3) * 0.02)}`} max={`${property.purchasePrice * Math.pow(1.055, 3) * 0.1}`} />
-								</div>
-								{overValue !== 0 && <div className="payment-item-content">
-									{overValue === -1
-										? `Your down payment must be greater than ${parseInt(property.purchasePrice * Math.pow(1.055, 3) * 0.02)}`
-										: `Your down payment must be smaller than ${parseInt(property.purchasePrice * Math.pow(1.055, 3) * 0.1)}`
-									}
-								</div>}
-							</div>
-							<div className="payment-item">
-								<div className="payment-item-title">
-									<div className="payment-point"></div>
-									Year 1 payments
-								</div>
-								<div className="payment-item-content">
-									<NumberFormat
-										thousandSeparator = {'.'}
-										decimalSeparator={','}
-										prefix={'Rp. '}
-										value={parseInt((property.purchasePrice * Math.pow(1.055, 3) * 0.15 - initialDown) / 36)}
-										displayType={'text'}
-										renderText={value =>
-											<div style={{ width: '100%' }}>
-												<span style={{ display: 'inline-block' }}>{`Rp. ${property.rentPrice} +`}</span>
-												<div style={{ display: 'inline-block', color: '#2ECC71', paddingLeft: '5px' }}>{`${value} equity`}</div>
-												<span style={{ display: 'inline-block' }}>{'/mo'}</span>
-											</div>
-										}
-									/>
-								</div>
-							</div>
-							<div className="payment-item">
-								<div className="payment-item-title">
-									<div className="payment-point"></div>
-									Year 2 payments
-								</div>
-								<div className="payment-item-content">
-									<NumberFormat
-										thousandSeparator = {'.'}
-										decimalSeparator={','}
-										prefix={'Rp. '}
-										value={parseInt((property.purchasePrice * Math.pow(1.055, 3) * 0.15 - initialDown) / 36)}
-										displayType={'text'}
-										renderText={value =>
-											<div style={{ width: '100%' }}>
-												<span style={{ display: 'inline-block' }}>{`Rp. ${property.rentPrice * Math.pow(1.055, 1)} +`}</span>
-												<div style={{ display: 'inline-block', color: '#2ECC71', paddingLeft: '5px' }}>{`${value} equity`}</div>
-												<span style={{ display: 'inline-block' }}>{'/mo'}</span>
-											</div>
-										}
-									/>
-								</div>
-							</div>
-							<div className="payment-item">
-								<div className="payment-item-title">
-									<div className="payment-point"></div>
-									Year 3 payments
-								</div>
-								<div className="payment-item-content">
-									<NumberFormat
-										thousandSeparator = {'.'}
-										decimalSeparator={','}
-										prefix={'Rp. '}
-										value={parseInt((property.purchasePrice * Math.pow(1.055, 3) * 0.15 - initialDown) / 36)}
-										displayType={'text'}
-										renderText={value =>
-											<div style={{ width: '100%' }}>
-												<span style={{ display: 'inline-block' }}>{`Rp. ${parseInt(property.rentPrice * Math.pow(1.055, 2))} +`}</span>
-												<div style={{ display: 'inline-block', color: '#2ECC71', paddingLeft: '5px' }}>{`${value} equity`}</div>
-												<span style={{ display: 'inline-block' }}>{'/mo'}</span>
-											</div>
-										}
-									/>
-								</div>
-							</div>
-							<div className="payment-item">
-								<div className="payment-item-title">
-									<div className="payment-point"></div>
-									After three years
-								</div>
-								<div className="payment-item-content-no-border">
-									<NumberFormat
-										thousandSeparator = {'.'}
-										decimalSeparator={','}
-										prefix={'Rp. '}
-										value={parseInt(property.purchasePrice * Math.pow(1.055, 3) * 0.15)}
-										displayType={'text'}
-										renderText={value =>
-											<div style={{ fontWeight: 'bold', color: '#2ECC71' }}>{`${value} cash back`}</div>
-										}
-									/>
-								</div>
-							</div>
-						</div>
-						<div className="house-price">
-							<NumberFormat
-								thousandSeparator = {'.'}
-								decimalSeparator={','}
-								prefix={'House purchase price of Rp/'}
-								value={parseInt(property.purchasePrice * Math.pow(1.055, 3))}
-								displayType={'text'}
-							/>
-						</div>
-						<div className="you-choose">You choose</div>
-						<div className="buy-sell">
-							<div className="for-buy">
-								<div className="title">Buy</div>
-								<div className="content">Put Rp. 120.000.000 down toward mortgage</div>
-							</div>
-							<div className="mid-gap">
-								<div className="mid-v-border"></div>
-								<div className="mid-or">OR</div>
-								<div className="mid-v-border"></div>
-							</div>
-							<div className="for-sell">
-								<div className="title">Sell</div>
-								<div className="content">Cash out your ownership at ~ Rp. 900.000.00</div>
-							</div>
-						</div>
-						<button className="schedule">Click to schedule a private tour</button>
-					</div>
+					<Slider property={property} />
+					<Sidebar property={property} />
 					<div className="properties-data-container">
-						<div className="address word-break">{property.address1}</div>
+						<div className="address word-break">
+							{property.address1}
+							<div className="properties-fav" onClick={() => this.favClick(property)}>
+								<img src={(fav.length > 0 && _.findIndex(fav, item => item === property.id) > -1) ? bfavor : favor} alt="" />
+							</div>
+						</div>
 						<div className="address word-break">{property.address2}</div>
 						<div className="bed-bath-size word-break">
 							{`${property.beds} beds ${property.baths} baths ${property.buildingSize}m`}
