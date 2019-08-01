@@ -1,0 +1,97 @@
+.properties-data-container {
+	width: calc(100vw - 450px);
+	padding: 40px;
+}
+
+.properties-data-container .address {
+	font-family: GothamRnd;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 24px;
+
+	color: #444444;
+
+	padding-bottom: 5px;
+
+	display: flex;
+	align-items: center;
+}
+
+.properties-data-container .address .properties-fav {
+	margin-left: 35px;
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.18);
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
+	background: #FFFFFF;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.properties-data-container .bed-bath-size {
+	font-family: GothamRnd;
+	font-size: 16px;
+	line-height: 19px;
+
+	color: #444444;
+
+	padding-top: 10px;
+}
+
+.properties-data-container .description {
+	font-family: GothamRnd;
+	font-size: 14px;
+	line-height: 20px;
+	
+	color: #888888;
+
+	padding-top: 15px;
+}
+
+.properties-data-container .mid-border {
+	border: 0.5px solid #D6D6D6;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.properties-data-container .mid-title {
+	font-family: GothamRnd;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 24px;
+
+	color: #444444;
+	padding-bottom: 20px;
+}
+
+.properties-data-container .mid-container .mid-container-item {
+	display: inline-block;
+	width: 230px;
+	padding-right: 10px;
+	padding-bottom: 15px;
+	vertical-align: top;
+}
+
+.properties-data-container .mid-container .mid-container-item ul {
+	margin-left: -15px;
+}
+
+.properties-data-container .mid-container .mid-container-item .mid-container-item-title {
+	font-family: GothamRnd;
+	font-weight: 900;
+	font-size: 18px;
+	line-height: 22px;
+	
+	color: #444444;	
+	padding-bottom: 5px;
+}
+
+.properties-data-container .mid-container .mid-container-item .mid-container-item-content {
+	font-family: GothamRnd;
+	font-size: 16px;
+	line-height: 19px;
+	
+	color: #444444;
+}
