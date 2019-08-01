@@ -92,7 +92,7 @@ class PropertyData extends React.Component {
 						</div>
 						<div className="mid-border"></div>
 						<div className="mid-title">Interior Features</div>
-						<div className="mid-container">
+						<div className="mid-container interior">
 							<div className="mid-container-item">
 								<div className="mid-container-item-title">Bedrooms / Bathrooms</div>
 								<ul>

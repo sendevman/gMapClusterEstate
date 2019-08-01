@@ -43,6 +43,8 @@
 
 .properties-side-bar .payment .payment-item .payment-item-content-no-border {
 	border: none;
+	display: flex;
+  justify-content: center;
 }
 
 .properties-side-bar {
@@ -168,7 +170,8 @@
 	color: #888888;
 }
 
-.properties-side-bar .schedule {
+.properties-page-view .properties-container .properties-side-bar .schedule {
+	display: block;
 	width: 100%;
 	height: 50px;
 	background: linear-gradient(180deg, #1B73E9 0%, #1A4AE8 100%);
@@ -180,4 +183,35 @@
 	text-align: center;
 
 	color: #FFFFFF;
+}
+
+@media only screen and (min-width: 450px) and (max-width: 800px) {
+	.properties-side-bar {
+		position: relative;
+    margin: auto;
+    margin-top: -95px;
+		top: 0;
+		right: inherit;
+	}
+}
+
+@media only screen and (max-width: 450px) {
+	.properties-side-bar {
+    position: static;
+    box-shadow: none;
+    width: 100%;
+	}
+
+	.properties-page-view .properties-container .properties-side-bar .schedule {
+		display: none;
+	}
+
+	.properties-side-bar .buy-sell .for-buy,
+	.properties-side-bar .buy-sell .for-sell {
+		border-bottom: 1px solid #D6D6D6;
+	}
+
+	.properties-side-bar .buy-sell .mid-gap {
+		border-bottom: 1px solid #D6D6D6;
+	}
 }

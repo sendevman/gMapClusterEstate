@@ -95,3 +95,31 @@
 	
 	color: #444444;
 }
+
+@media only screen and (min-width: 450px) and (max-width: 800px) {
+	.properties-data-container {
+		width: 100%;
+		padding-bottom: 0;
+	}
+}
+
+@media only screen and (max-width: 450px) {
+	.properties-data-container {
+		width: 100%;
+		padding-left: 14px;
+		padding-right: 14px;
+		padding-bottom: 0;
+	}
+
+	.properties-data-container .mid-container .mid-container-item {
+		width: 50%;
+	}
+
+	.properties-data-container .mid-container.interior .mid-container-item {
+		width: 100%;
+	}
+
+	.properties-data-container .address {
+		justify-content: space-between;
+	}
+}
