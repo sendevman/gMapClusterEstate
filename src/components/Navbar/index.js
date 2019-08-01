@@ -45,7 +45,7 @@ class Navbar extends React.Component {
 							</a>
 						</div>
 						<ul className="nav navbar-nav navbar-right">
-							{location && location.pathname === '/listingmap' && <li>
+							{location && location.pathname !== '/login' && location.pathname !== '/signup' && <li>
 								{this.auth()}
 							</li>}
 							{location && location.pathname === '/login' && <li>
