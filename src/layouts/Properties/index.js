@@ -20,6 +20,7 @@ class Properties extends Component {
 		super(props);
 		this.state = {
 			initialDown: 0,
+			overValue: 0,
 		};
 	}
 
@@ -28,14 +29,27 @@ class Properties extends Component {
 	}
 
 	onChangeInit = (event) => {
-		this.setState({
-			initialDown: event.target.value,
-		});
+		if (event.target.value < parseInt(this.props.property.purchasePrice * Math.pow(1.055, 3) * 0.02)) {
+			this.setState({
+				initialDown: event.target.value,
+				overValue: -1,
+			});
+		} else if (event.target.value > parseInt(this.props.property.purchasePrice * Math.pow(1.055, 3) * 0.1)) {
+			this.setState({
+				initialDown: event.target.value,
+				overValue: 1,
+			});
+		} else {
+			this.setState({
+				initialDown: event.target.value,
+				overValue: 0,
+			});
+		}
 	}
 
 	render() {
 		const { history, location, property } = this.props;
-		const { initialDown } = this.state;
+		const { initialDown, overValue } = this.state;
 		return (
 			<div className="properties-page-view">
 				<Navbar history={history} location={location} />
@@ -79,6 +93,12 @@ class Properties extends Component {
 								<div className="payment-item-content">
 									<input style={{ width: '250px' }} className="" type="number" onChange={this.onChangeInit} defaultValue={parseInt(property.purchasePrice * Math.pow(1.055, 3) * 0.02)} min={`${parseInt(property.purchasePrice * Math.pow(1.055, 3) * 0.02)}`} max={`${property.purchasePrice * Math.pow(1.055, 3) * 0.1}`} />
 								</div>
+								{overValue !== 0 && <div className="payment-item-content">
+									{overValue === -1
+										? `Your down payment must be greater than ${parseInt(property.purchasePrice * Math.pow(1.055, 3) * 0.02)}`
+										: `Your down payment must be smaller than ${parseInt(property.purchasePrice * Math.pow(1.055, 3) * 0.1)}`
+									}
+								</div>}
 							</div>
 							<div className="payment-item">
 								<div className="payment-item-title">
