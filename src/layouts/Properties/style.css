@@ -5,17 +5,9 @@
 .properties-page-view .properties-container {
 	position: relative;
 	width: 100%;
-}
-
-.properties-page-view .properties-container .properties-image-slider {
-	max-height: 450px;
-	overflow: hidden;
-	display: flex;
-  align-items: center;
-}
-
-.properties-page-view .properties-container .properties-image-slider .properties-slider-image {
-	width: 100%;
+	max-width: 1280px;
+  margin: auto;
+  padding-bottom: 70px;
 }
 
 .properties-page-view .properties-container .properties-data-container {
@@ -32,6 +24,22 @@
 	color: #444444;
 
 	padding-bottom: 5px;
+
+	display: flex;
+	align-items: center;
+}
+
+.properties-page-view .properties-container .properties-data-container .address .properties-fav {
+	margin-left: 35px;
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.18);
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
+	background: #FFFFFF;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .properties-page-view .properties-container .properties-data-container .bed-bath-size {
@@ -104,7 +112,6 @@
 	position: absolute;
 	z-index: 100;
 	width: 387px;
-	/* height: 674px; */
 	top: 355px;
 	right: 40px;
 	background: #FFFFFF;
@@ -146,53 +153,6 @@
 	line-height: 22px;
 
 	color: #333333;
-}
-
-.properties-page-view .properties-container .properties-side-bar .payment {
-	padding: 23px 19px 0;
-}
-
-.properties-page-view .properties-container .properties-side-bar .payment .payment-item .payment-item-title {
-	font-family: GothamRnd;
-	font-size: 12px;
-	font-weight: 900;
-	line-height: 14px;
-	
-	color: #1873E8;
-	display: flex;
-	align-items: center;
-}
-
-.properties-page-view .properties-container .properties-side-bar .payment .payment-item .payment-item-title .payment-point {
-	width: 7px;
-	height: 7px;
-	border-radius: 3.5px;
-
-	background: #1873E8;
-
-	margin-right: 6px;
-}
-
-.properties-page-view .properties-container .properties-side-bar .payment .payment-item .payment-item-content-no-border,
-.properties-page-view .properties-container .properties-side-bar .payment .payment-item .payment-item-content {
-	/* height: 50px; */
-	border-left: 1px solid #D6D6D6;
-
-	padding-top: 10px;
-	padding-left: 10px;
-	padding-bottom: 20px;
-	margin-left: 3px;
-
-	font-family: GothamRnd;
-	font-size: 16px;
-	line-height: 19px;
-
-	color: #444444;
-	display: flex;
-}
-
-.properties-page-view .properties-container .properties-side-bar .payment .payment-item .payment-item-content-no-border {
-	border: none;
 }
 
 .properties-page-view .properties-container .properties-side-bar .house-price {

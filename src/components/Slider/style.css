@@ -1,0 +1,56 @@
+.properties-image-slider {
+	max-height: 450px;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	position: relative;
+}
+
+.properties-image-slider .properties-slider-image {
+	width: 100%;
+}
+
+.properties-image-slider .carousel {
+	display: none;
+}
+
+.properties-image-slider .carousel.carousel-slider {
+	display: block;
+	position: static !important;
+}
+
+.properties-image-slider .carousel-status {
+	display: none;
+}
+
+.properties-image-slider .control-dots {
+	bottom: 10px;
+}
+
+.properties-image-slider .carousel .control-next.control-arrow:before,
+.properties-image-slider .carousel .control-arrow:before,
+.properties-image-slider .carousel.carousel-slider .control-arrow:before {
+	content: '>';
+	font-size: 50px;
+	font-weight: 600;
+	border: none;
+}
+
+.properties-image-slider .carousel .control-prev.control-arrow:before {
+	content: '<';
+}
+
+.properties-image-slider .carousel .control-next.control-arrow,
+.properties-image-slider .carousel .control-arrow,
+.properties-image-slider .carousel.carousel-slider .control-arrow {
+	opacity: 1;
+}
+
+.properties-image-slider .carousel.carousel-slider .control-arrow:hover {
+	background: transparent;
+}
+
+.properties-image-slider .carousel .control-dots .dot.selected {
+	width: 17px;
+	border-radius: 4px;
+}
